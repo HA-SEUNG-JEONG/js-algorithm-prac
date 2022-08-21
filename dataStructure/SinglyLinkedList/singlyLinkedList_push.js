@@ -30,8 +30,15 @@ class SinglyLinkedList {
       this.tail = newNode; //list의 tail이 새로운 노드를 가리키도록
     }
     this.length++;
-    console.log("this", this);
     return this;
+  }
+  traverse() {
+    //새로운 tail을 찾는 작업
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
   }
 }
 
