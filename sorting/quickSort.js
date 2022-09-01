@@ -28,11 +28,12 @@
 //   return [...quickSort(left), pivot, ...quickSort(right)];
 // }
 
+//퀵 정렬의 실행 시간은 피벗 선택 위치에 따라 달라질 수 있음
+//이상적으로는 데이터 중간값이 피벗 위치
+
 function pivot(arr, start = 0, end = arr.length + 1) {
   function swap(array, i, j) {
-    let temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    [array[i], array[j]] = [array[j], array[i]];
   }
 
   let pivot = arr[start];
@@ -45,6 +46,7 @@ function pivot(arr, start = 0, end = arr.length + 1) {
     }
   }
   swap(arr, start, swapIdx);
+
   return swapIdx;
 }
 
@@ -59,4 +61,4 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
   return arr;
 }
 
-console.log(quickSort([4, 6, 9, 1, 2, 5, 3]));
+console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
