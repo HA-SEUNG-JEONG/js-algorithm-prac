@@ -35,7 +35,7 @@ function mostDigits(nums) {
 // 1. 수 목록을 받는 함수를 정의
 // 2. 가장 큰 수가 몇 자리인지 알아내야 한다.
 // 3. 루프 시작 - 0부터 가장 큰 자릿수
-// 4. 진행할 때마다 각 자릿수에 버킷 생성(버킷은 빈 배열)
+// 4. 진행할 때마다 각 자릿수에 버킷 생성(버킷은 빈 배열부터 시작)
 // 5. 루프를 수행할 때마다 각각의 수를 올바른 버킷에 넣기
 // 6. 기존 배열을 버킷의 값으로 교체
 
@@ -48,9 +48,15 @@ function radixSort(nums) {
       let digit = getDigit(nums[j], i);
       digitBuckets[digit].push(nums[j]);
     }
-    nums = [].concat(...digitBuckets);
+    nums = [].concat(...digitBuckets); //새로운 배열에 담기 위해 spread 사용
   }
   return nums;
 }
 
-console.log(radixSort([23, 567, 89, 12234324, 90]));
+console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
+
+//Big O
+// Best,Average,Worst: O(nk)
+
+//n : 정렬할 항목 수나 정수의 수
+//k : word size
