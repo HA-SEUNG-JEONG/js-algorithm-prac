@@ -34,6 +34,23 @@ class BinarySearchTree {
       }
     }
   }
+  find(value) {
+    //insert에서와 마찬가지로 루트부터 시작
+    //루트가 있는지 확인
+    //루트가 있으면 새로 만든 노드 값을 보고 찾는 값과 동일한지 확인
+    if (this.root === null) return false;
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 //      10
@@ -48,3 +65,6 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
+
+//Big O
+// Insertion,Searching - O(logn)
