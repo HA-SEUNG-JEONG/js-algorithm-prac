@@ -6,6 +6,25 @@ class Node {
   }
 }
 
+function checkLocation(value, current, newNode) {
+  while (true) {
+    if (value === current.value) return undefined;
+    if (value < current.value) {
+      if (current.left === null) {
+        current.left = newNode;
+        return this;
+      }
+      current = current.left;
+    } else {
+      if (current.right === null) {
+        current.right = newNode;
+        return this;
+      }
+      current = current.right;
+    }
+  }
+}
+
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -17,22 +36,7 @@ class BinarySearchTree {
       return this;
     }
     let current = this.root;
-    while (true) {
-      if (value === current.value) return undefined;
-      if (value < current.value) {
-        if (current.left === null) {
-          current.left = newNode;
-          return this;
-        }
-        current = current.left;
-      } else {
-        if (current.right === null) {
-          current.right = newNode;
-          return this;
-        }
-        current = current.right;
-      }
-    }
+    checkLocation(value, current, newNode);
   }
   find(value) {
     //insert에서와 마찬가지로 루트부터 시작
@@ -59,12 +63,6 @@ class BinarySearchTree {
 
 let tree = new BinarySearchTree();
 tree.insert(10);
-tree.insert(5);
-tree.insert(13);
-tree.insert(11);
-tree.insert(2);
-tree.insert(16);
-tree.insert(7);
 
 //Big O
-// Insertion,Searching - O(logn)
+// Insertion,Searching - O(logn) -> 항상 이렇지는 않음
