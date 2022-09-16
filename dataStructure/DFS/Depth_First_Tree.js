@@ -90,6 +90,16 @@ class BinarySearchTree {
     traverse(current); //root에 traverse 함수 호출
     return data;
   }
+  DFSPostOrder() {
+    let data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value); //루트, 방문을 나중에 수행
+    }
+    traverse(this.root);
+    return data;
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -100,3 +110,4 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 tree.DFSPreOrder();
+tree.DFSPostOrder();
