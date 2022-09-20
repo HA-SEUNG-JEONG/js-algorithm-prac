@@ -50,8 +50,9 @@ class BinarySearchTree {
         current = current.left;
       } else if (value > current.value) {
         current = current.right;
+      } else {
+        return true;
       }
-      return true;
     }
     return false;
   }
@@ -63,6 +64,7 @@ class BinarySearchTree {
 
 let tree = new BinarySearchTree();
 tree.insert(10);
+tree.insert(20);
 
 //Big O
 // Insertion,Searching - O(logn) -> 항상 이렇지는 않음
