@@ -16,13 +16,13 @@ unweighted grpah - 간선에 부여된 값이 없는 그래프
 
 ### Adjacency Matrix
 
-![image](https://user-images.githubusercontent.com/88266129/191514032-e6e0c958-7985-4f7d-9eeb-74fec4504a66.png)
+![](https://velog.velcdn.com/images/gktmd652/post/b8378c9a-598c-4291-abf8-1fcb499a7442/image.png)
 
 보통 중첩 배열로 저장, `0과 1`을 쓰거나 `true/false`를 사용할 수도 있다.
 
 ### Adjacency List
 
-![image](https://user-images.githubusercontent.com/88266129/191515092-62178635-4fc6-4eb5-86c1-0ceff6efd86a.png)
+![](https://velog.velcdn.com/images/gktmd652/post/32eb920c-6fa5-4641-a981-8ffeeb855cc1/image.png)
 
 보통은 이렇게 순서대로 있을수도 있지만 노드가 `number`가 아닐수도 있을 것이고 노드 사이에 갭이 엄청나게 클 경우도 있을 것이다.
 이 때는 `해시 테이블`을 사용하면 된다.
