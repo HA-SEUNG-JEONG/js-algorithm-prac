@@ -43,6 +43,14 @@ class Graph {
       this.adjacencyList[vertex2]
     );
   }
+  removeVertex(vertex) {
+    if (!this.contains(vertex)) return false;
+    while (this.adjacencyList[vertex].length) {
+      const adjacentVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, adjacentVertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
 }
 
 let graph = new Graph();
