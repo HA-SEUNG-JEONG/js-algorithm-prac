@@ -1,3 +1,11 @@
+const filter = (f, iter) => {
+  let result = [];
+  for (const item of iter) {
+    if (f(item)) result.push(item);
+  }
+  return result;
+};
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -16,11 +24,23 @@ class Graph {
     this.adjacencyList[vertex1].push(vertex2);
     this.adjacencyList[vertex2].push(vertex1);
   }
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1] = filter(
+      (vertex) => vertex !== vertex2,
+      this.adjacencyList[vertex1]
+    );
+    this.adjacencyList[vertex2] = filter(
+      (vertex) => vertex !== vertex1,
+      this.adjacencyList[vertex2]
+    );
+  }
 }
 
 let graph = new Graph();
 graph.addVertex("도쿄");
 graph.addVertex("미국");
+graph.addVertex("홍콩");
 graph.addVertex("한국");
 graph.addEdge("도쿄", "한국");
+graph.removeEdge("도쿄", "한국");
 console.log(graph);
