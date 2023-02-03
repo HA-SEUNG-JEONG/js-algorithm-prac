@@ -48,21 +48,21 @@ class SinglyLinkedList {
     // 현재 head의 next 노드를 가리키도록 head 업데이트
     if (!this.head) undefined;
 
-    let current = this.head;
+    let currentHead = this.head;
     this.head = this.head.next;
     this.length--;
     //this.length가 0인 경우 처리
     if (this.length === 0) {
       this.tail = null;
     }
-    return current;
+    return currentHead;
   }
 }
 
-var list = new SinglyLinkedList();
+const list = new SinglyLinkedList();
 list.push("HELLO");
 list.push("GOODBYE");
 list.push("!");
-list.push("hi");
+list.shift();
 
 console.log(list);
