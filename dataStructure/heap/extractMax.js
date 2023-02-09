@@ -1,6 +1,3 @@
-//인자는 따로 안받음
-// 부모는 0 인덱스(루트)에서 시작
-
 //insert 메소드 작성하고 숫자 추가
 //최대 힙에 만족할 때까지 버블 업 진행
 
@@ -44,13 +41,27 @@ class MaxBinaryHeap {
     return max;
   }
   sinkDown() {
-    let idx = 0;
+    // values 속성의 첫 번째 값과 마지막 값을 스왑한다.
+    // values 속성으로 부터 pop하고, 마지막에 그 값을 반환한다.
+    // 새로운 root가 제 자리에 sink down(최상위 노드에서 하위노드로 내려가는 것)할 수 있도록 다음과 같이 로직을 진행한다.
+
+    // parentIndex는 0부터 시작한다(root)
+    // left child의 index를 찾는다. (2*index + 1) ⇒ 범위를 벗어나지 않는 값
+    // right child의 index를 찾는다. (2*index + 2) ⇒ 범위를 벗어나지 않는 값
+    // left 혹은 right child가 더 크다면 스왑한다. 둘 다 보다 크다면 둘 중에 더 큰 값과 스왑한다.
+    // 스왑한 child index가 새로운 parent index가 된다.
+    // child가 크지 않을 때까지 looping과 swapping을 반복한다.
+    // old root를 반환한다.
+
+    let idx = 0; //idx는 0부터 시작
     const length = this.values.length;
     const element = this.values[0];
     while (true) {
       //left,right 찾기
+      /* This is how you find the left and right child of a node in a binary heap. */
       let leftChildIdx = 2 * idx + 1;
       let rightChildIdx = 2 * idx + 2;
+      /* Declaring the variables left, right, and swap. */
       let left, right;
       let swap = null;
 

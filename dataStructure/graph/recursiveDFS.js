@@ -93,3 +93,5 @@ console.log(graph);
 // B    C
 // |    |
 // D -- E
+
+//순서 : ['A', 'B', 'D', 'C', 'E']

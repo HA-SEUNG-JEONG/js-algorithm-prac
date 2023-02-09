@@ -105,18 +105,47 @@ class SinglyLinkedList {
     if (index < 0 || index > this.length) return undefined;
     if (index === 0) return this.shift();
     if (index === this.length - 1) return this.pop();
+
     let prevNode = this.get(index - 1);
     let removed = prevNode.next;
     prevNode.next = removed.next;
     this.length--;
     return removed;
   }
+  reverse() {
+    //head와 taul swap
+    //next 변수 생성
+    //prev 변수 생성 후 current 변수 생성하고 현재의 head값으로 초기화
+    //루프를 돌면서 현재 노드의 next를 노드의 next.next로 설정
+    //현재 노드의 next를 이전에 바로 앞에 있던 노드를 가리키도록 설정
+    //마지막으로 현재 노드 값을 prev에 저장하고 ,current에 next에 저장
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let next;
+    let prev = null; //초기값은 null로 설정
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      console.log("next", next);
+      console.log();
+      current.next = prev;
+      console.log("current.next", current.next);
+      console.log();
+      prev = current;
+      console.log("prev", prev);
+      console.log();
+      current = next;
+      console.log("current", current);
+      console.log("================");
+    }
+    return this;
+  }
 }
 
 let list = new SinglyLinkedList();
-list.push("HEllo");
-list.push("Bye");
-list.push("World");
-list.push("!");
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
 
-console.log(list);
+console.log(list.reverse());

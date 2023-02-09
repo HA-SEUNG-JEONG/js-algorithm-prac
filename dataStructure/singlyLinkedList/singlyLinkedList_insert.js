@@ -1,5 +1,5 @@
-//업데이트할 값과 위치를 알려주는 인덱스를 인자로 받아야 함
-
+//인덱스와 값을 받음
+//만약 인덱스가 0보다 작거나 리스트 길이보다 크면 false 리턴
 class Node {
   constructor(val) {
     this.val = val;
@@ -26,25 +26,7 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
-  pop() {
-    if (!this.head) return undefined;
-    let current = this.head;
-    let newTail = current;
-    while (current.next) {
-      newTail = current;
-      current = current.next;
-    }
-    this.tail = newTail;
-    newTail.next = null;
-    this.length--;
 
-    if (this.length === 0) {
-      //this가 길이 0이 될 경우 빈 리스트로 설정
-      this.head = null;
-      this.tail = null;
-    }
-    return current;
-  }
   get(index) {
     if (index < 0 || index >= this.length) return undefined; //index가 음수거나 리스트 길이보다 같거나 크면 undefined
     let counter = 0; //카운터 변수 0으로 초기화
@@ -56,13 +38,22 @@ class SinglyLinkedList {
     }
     return current; //current 리턴
   }
-  set(index, value) {
-    let foundNode = this.get(index);
-    if (foundNode) {
-      foundNode.value = value;
-      return true;
-    }
-    return false;
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false; //만약 인덱스가 0보다 작거나 리스트 길이보다 크면 false 리턴
+    /* If the index is equal to the length of the list, we want to push the value to the end of the
+    list. */
+    if (index === this.length) return Boolean(this.push(val));
+    if (index === 0) return Boolean(this.unshift(val));
+
+    let newNode = new Node(val);
+    let prev = this.get(index - 1);
+    let temp = prev.next;
+
+    prev.next = newNode;
+    newNode.next = temp;
+
+    this.length++;
+    return true;
   }
 }
 

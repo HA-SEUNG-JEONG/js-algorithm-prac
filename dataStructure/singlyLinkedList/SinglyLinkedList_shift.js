@@ -47,7 +47,6 @@ class SinglyLinkedList {
     // 노드가 없을 경우 undefined 반환, 존재하면 현재의 head를 변수에 저장
     // 현재 head의 next 노드를 가리키도록 head 업데이트
     if (!this.head) undefined;
-
     let currentHead = this.head;
     this.head = this.head.next;
     this.length--;

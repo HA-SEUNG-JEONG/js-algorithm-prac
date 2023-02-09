@@ -22,13 +22,16 @@ class SinglyLinkedList {
     //리스트가 비어있지 않으면 마지막 노드의 next를 새롭게 생성된 노드를 가리키도록 하기
     // 리스트의 길이도 증가시켜야 함
     let newNode = new Node(val);
+    /* If the list is empty, then the head and tail are the same. */
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
     } else {
+      /* Adding a new node to the end of the list. */
       this.tail.next = newNode; //tail이 가리키고 있는 마지막 노드의 next가 새로운 노드를 가리키도록 함
       this.tail = newNode; //list의 tail이 새로운 노드를 가리키도록
     }
+    /* Incrementing the length of the list. */
     this.length++;
     return this;
   }
@@ -36,14 +39,13 @@ class SinglyLinkedList {
     //새로운 tail을 찾는 작업
     let current = this.head;
     while (current) {
-      console.log(current.val);
       current = current.next;
     }
   }
 }
 
 let list = new SinglyLinkedList();
-// list.push("HEllo");
-// list.push("Bye");
+list.push("HEllo");
+list.push("Bye");
 
 console.log(list);
